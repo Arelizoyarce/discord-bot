@@ -1,0 +1,16 @@
+{
+  "name": "rigo-discord-bot",
+  "version": "0.0.1",
+  "description": "Discord Bot",
+  "author": "https://github.com/Arelizoyarce/discord-bot",
+  "license": "ISC",
+    "main": "main.js",
+    "engines": {
+        "node": ">=14.x"
+    },
+    "type": "module",
+  "dependencies": {
+    "discord.js": "^14.1.1",
+    "eslint": "^8.20.0"
+  }
+}
