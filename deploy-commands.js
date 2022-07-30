@@ -1,7 +1,7 @@
-import fs from 'node:fs'
-import path from 'node:path';
-import { REST, Routes, } from 'discord.js'
-import { botId, token, guildId } from './config.json'
+const fs = require('node:fs');
+const path = require('node:path');
+const { Routes,REST } = require('discord.js');
+const { botId, guildId, token } = require('./config.json');
 
 
 const commands = [];

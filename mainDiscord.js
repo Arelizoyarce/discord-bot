@@ -1,8 +1,7 @@
-import fs from 'node:fs'
-import path from 'node:path';
-import{botId}from './config.json'
-
-import {Client, GatewayIntentBits}from 'discord.js'
+const fs = require('node:fs');
+const path = require('node:path');
+const { Client, Collection, GatewayIntentBits } = require('discord.js');
+const { token } = require('./config.json');
 
 const bot = new Client({ intents: [GatewayIntentBits.Guilds] });
 bot.commands = new Collection();
@@ -19,17 +18,25 @@ for (const file of commandFiles) {
 }
 
 
-bot.on('ready', ()=>{
-    console.log('bot is readys')
-})
+bot.once('ready', () => {
+	console.log('Ready!');
+});
 bot.on('interactionCreate', async interaction => {
-    if (!interaction.isChatInputCommand()) return;
-  
-    if (interaction.commandName === 'ping') {
-      await interaction.reply('Pong!');
-    }
-  });
-bot.login(botId)
+	if (!interaction.isChatInputCommand()) return;
+
+	const command = bot.commands.get(interaction.commandName);
+
+	if (!command) return;
+
+	try {
+    console.log('estoy adentro del ttry')
+		await command.execute(interaction);
+	} catch (error) {
+		console.error(error);
+		await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+	}
+});
+bot.login(token)
 .then(()=>{
     console.log(`${bot.user.username}, se ha conectado`)
 })
