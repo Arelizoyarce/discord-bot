@@ -1,5 +1,6 @@
 import fs from 'node:fs'
 import path from 'node:path';
+import{botId}from './config.json'
 
 import {Client, GatewayIntentBits}from 'discord.js'
 
@@ -28,7 +29,7 @@ bot.on('interactionCreate', async interaction => {
       await interaction.reply('Pong!');
     }
   });
-bot.login('MTAwMjY5MjI5NTM4NjIxODU2Ng.GFjlBM.aXYDgcp2LWercgZ-tI2LE-FylEwYSgfxIwTVuw')
+bot.login(botId)
 .then(()=>{
     console.log(`${bot.user.username}, se ha conectado`)
 })
