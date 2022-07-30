@@ -29,7 +29,6 @@ bot.on('interactionCreate', async interaction => {
 	if (!command) return;
 
 	try {
-    console.log('estoy adentro del ttry')
 		await command.execute(interaction);
 	} catch (error) {
 		console.error(error);
